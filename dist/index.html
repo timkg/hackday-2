@@ -15,7 +15,7 @@
     }
 
     #topbar {
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
     }
@@ -70,8 +70,9 @@
 
     aside {
       width: 30%;
-      float: right;
+      position: fixed;
       padding: 20px;
+      right: 20px;
     }
     .info {
       padding: 15px;
@@ -107,6 +108,10 @@
     .info header .word {
       font-size: 20px;
       cursor: pointer;
+    }
+
+    .info header .word:hover {
+      border-bottom: 2px solid #ddd;
     }
 
     .info h3 {
