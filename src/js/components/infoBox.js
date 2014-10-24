@@ -84,8 +84,15 @@ var SentenceInfoBox = React.createClass({
   componentDidMount: function () {
     var self = this;
     Dispatcher.register(function (payload) {
-      self.setState(payload);
+      if (payload.action === 'SENTENCE_CLICKED') {
+        self.setState(payload);
+
+      }
     })
+  },
+  componentDidUpdate: function () {
+    var firstWord = document.querySelector('.info header .word');
+    jQuery(firstWord).click();
   },
   render: function () {
     return (

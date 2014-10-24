@@ -15,6 +15,9 @@ gulp.task('copy', function () {
 
   gulp.src('src/topbar.png')
     .pipe(gulp.dest('dist'))
+
+  gulp.src('src/js/jquery-2.1.1.min.js')
+    .pipe(gulp.dest('dist/js'))
 })
 
 gulp.task('default', ['browserify', 'copy'])

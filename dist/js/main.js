@@ -19758,8 +19758,15 @@ var SentenceInfoBox = React.createClass({displayName: 'SentenceInfoBox',
   componentDidMount: function () {
     var self = this;
     Dispatcher.register(function (payload) {
-      self.setState(payload);
+      if (payload.action === 'SENTENCE_CLICKED') {
+        self.setState(payload);
+
+      }
     })
+  },
+  componentDidUpdate: function () {
+    var firstWord = document.querySelector('.info header .word');
+    jQuery(firstWord).click();
   },
   render: function () {
     return (
@@ -19826,10 +19833,11 @@ module.exports = SentenceInfoBox;
 var React = require('react');
 var Word = require('./word');
 var Dispatcher = require('../dispatchers/dispatcher');
+var merge = require('react/lib/merge');
 
 var Sentence = React.createClass({displayName: 'Sentence',
   handleClick: function () {
-    Dispatcher.dispatch(this.props.data);
+    Dispatcher.dispatch(merge({action: 'SENTENCE_CLICKED'}, this.props.data));
   },
   render: function () {
     return (
@@ -19844,7 +19852,7 @@ var Sentence = React.createClass({displayName: 'Sentence',
 
 module.exports = Sentence;
 
-},{"../dispatchers/dispatcher":152,"./word":151,"react":146}],151:[function(require,module,exports){
+},{"../dispatchers/dispatcher":152,"./word":151,"react":146,"react/lib/merge":132}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
