@@ -2,6 +2,7 @@
 var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
 var Word = require('./word');
+var userSkillLevel = require('../user');
 
 var SentenceInfoBoxWords = React.createClass({
   render: function () {
@@ -129,21 +130,52 @@ var WordInfo = React.createClass({
       ]
     }
   },
-  getPOS: function () {
+  getTitle: function () {
     switch (this.state.POS) {
-      case "verb":
-        return <tr><td>part of speech</td><td className="value">{this.state.root} &middot; {this.state.POS}</td><td className="score">3 out of 5</td></tr>
+      case "Verb":
+        return <h4>{this.state.display} (to {this.state.root})</h4>
         break;
       default:
-        return <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score">3 out of 6</td></tr>
+        return <h4>{this.state.root}</h4>
+        break;
+    }
+  },
+  getPOS: function () {
+    var getSkillLevel = function (pos) {
+      var lowValue = Math.round(Math.random() * 10);
+      var highValue = Math.round((Math.random() * 10) + 10);
+      return {
+        low: lowValue,
+        high: highValue
+      };
+    }
+    var skillLevel = getSkillLevel(this.state.POS);
+    switch (this.state.POS) {
+      case "Verb":
+        return <tbody>
+            <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+            <tr><td>person</td><td className="value">{this.state.person}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+            <tr><td>number</td><td className="value">{this.state.number}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+            <tr><td>tense</td><td className="value">{this.state.tense}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+          </tbody>
+        break;
+      case "Pronoun":
+        return <tbody>
+          <tr><td>person</td><td className="value">{this.state.person}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+          <tr><td>number</td><td className="value">{this.state.number}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+        </tbody>
+        break;
+      default:
+        return <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
         break;
     }
   },
   render: function () {
+    var title = this.getTitle();
     var partOfSpeechInfo = this.getPOS();
     return (
       <div className="wordinfo">
-        <h4>{this.state.display}</h4>
+      {title}
         <table>
           {partOfSpeechInfo}
         </table>

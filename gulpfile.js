@@ -18,6 +18,9 @@ gulp.task('copy', function () {
 
   gulp.src('src/js/jquery-2.1.1.min.js')
     .pipe(gulp.dest('dist/js'))
+
+  gulp.src('src/js/user.js')
+    .pipe(gulp.dest('dist/js'))
 })
 
 gulp.task('default', ['browserify', 'copy'])

@@ -19676,6 +19676,7 @@ module.exports = DialogLine;
 var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
 var Word = require('./word');
+var userSkillLevel = require('../user');
 
 var SentenceInfoBoxWords = React.createClass({displayName: 'SentenceInfoBoxWords',
   render: function () {
@@ -19803,21 +19804,52 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
       ]
     }
   },
-  getPOS: function () {
+  getTitle: function () {
     switch (this.state.POS) {
-      case "verb":
-        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.root, " · ", this.state.POS), React.DOM.td({className: "score"}, "3 out of 5"))
+      case "Verb":
+        return React.DOM.h4(null, this.state.display, " (to ", this.state.root, ")")
         break;
       default:
-        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, "3 out of 6"))
+        return React.DOM.h4(null, this.state.root)
+        break;
+    }
+  },
+  getPOS: function () {
+    var getSkillLevel = function (pos) {
+      var lowValue = Math.round(Math.random() * 10);
+      var highValue = Math.round((Math.random() * 10) + 10);
+      return {
+        low: lowValue,
+        high: highValue
+      };
+    }
+    var skillLevel = getSkillLevel(this.state.POS);
+    switch (this.state.POS) {
+      case "Verb":
+        return React.DOM.tbody(null, 
+            React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
+            React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
+            React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
+            React.DOM.tr(null, React.DOM.td(null, "tense"), React.DOM.td({className: "value"}, this.state.tense), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high))
+          )
+        break;
+      case "Pronoun":
+        return React.DOM.tbody(null, 
+          React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
+          React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high))
+        )
+        break;
+      default:
+        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high))
         break;
     }
   },
   render: function () {
+    var title = this.getTitle();
     var partOfSpeechInfo = this.getPOS();
     return (
       React.DOM.div({className: "wordinfo"}, 
-        React.DOM.h4(null, this.state.display), 
+      title, 
         React.DOM.table(null, 
           partOfSpeechInfo
         )
@@ -19828,7 +19860,7 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
 
 module.exports = SentenceInfoBox;
 
-},{"../dispatchers/dispatcher":152,"./word":151,"react":146}],150:[function(require,module,exports){
+},{"../dispatchers/dispatcher":152,"../user":155,"./word":151,"react":146}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
 var Word = require('./word');
@@ -20101,7 +20133,7 @@ module.exports = [
             "PennPOS": "?",
             "verb_class": "copula",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "tense": "present",
             "word_related_content": [
               {
@@ -20117,7 +20149,7 @@ module.exports = [
             "POS": "Pronoun",
             "PennPOS": "?",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "word_related_content": [
               {
                 "lesson_title": "Personal Pronouns",
@@ -20173,7 +20205,7 @@ module.exports = [
             "POS": "Pronoun",
             "PennPOS": "?",
             "person": 1,
-            "number": "sg",
+            "number": "singular",
             "case": "nominative",
             "word_related_content": [
               {
@@ -20216,7 +20248,7 @@ module.exports = [
             "POS": "Verb",
             "PennPOS": "VB",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "tense": "present",
             "mood": "imperative",
             "word_related_content": [
@@ -20233,7 +20265,7 @@ module.exports = [
             "POS": "Pronoun",
             "PennPOS": "?",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "word_related_content": [
               {
                 "lesson_title": "Personal Pronouns",
@@ -20282,7 +20314,7 @@ module.exports = [
             "PennPOS": "?",
             "verb_class": "copula",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "tense": "present",
             "word_related_content": [
               {
@@ -20298,7 +20330,7 @@ module.exports = [
             "POS": "Pronoun",
             "PennPOS": "?",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "word_related_content": [
               {
                 "lesson_title": "Personal Pronouns",
@@ -20354,7 +20386,7 @@ module.exports = [
             "POS": "Pronoun",
             "PennPOS": "?",
             "person": 1,
-            "number": "sg",
+            "number": "singular",
             "case": "nominative",
             "word_related_content": [
               {
@@ -20410,7 +20442,7 @@ module.exports = [
             "POS": "Verb",
             "PennPOS": "VB",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "tense": "present",
             "mood": "imperative",
             "key_vocabulary": true
@@ -20421,7 +20453,7 @@ module.exports = [
             "POS": "Pronoun",
             "PennPOS": "?",
             "person": 2,
-            "number": "sg",
+            "number": "singular",
             "key_vocabulary": true
           }
         ]
@@ -20553,4 +20585,126 @@ module.exports = [
     ]
   }
 ]
+},{}],155:[function(require,module,exports){
+module.exports = {
+  "user_id": 8104438,
+  "sentences": [
+    {
+      "tag": "Greeting",
+      "items_completed": 6,
+      "items_correct": 4
+    },
+    {
+      "tag": "Small Talk",
+      "items_completed": 5,
+      "items_correct": 5
+    }
+  ],
+  "words": [
+    {
+      "POS": "Adjective",
+      "items_completed": 24,
+      "items_correct": 19
+    },
+    {
+      "POS": "Noun",
+      "items_completed": 30,
+      "items_correct": 24
+    },
+    {
+      "POS": "Verb",
+      "items_completed": 20,
+      "items_correct": 15
+    },
+    {
+      "POS": "Interjection",
+      "items_completed": 11,
+      "items_correct": 10
+    },
+    {
+      "POS": "WH-Question",
+      "items_completed": 11,
+      "items_correct": 4,
+      "review_flag": true
+    },
+    {
+      "POS": "Pronoun",
+      "items_completed": 17,
+      "items_correct": 3,
+      "review_flag": true
+    },
+    {
+      "POS": "Adverb",
+      "items_completed": 8,
+      "items_correct": 7
+    }
+  ],
+
+  "skill_level_by_POS": {
+    "Adjective": {
+      "items_completed": 24,
+      "items_correct": 19
+    },
+    "Noun": {
+      "items_completed": 30,
+      "items_correct": 24
+    },
+    "Verb": {
+      "items_completed": 20,
+      "items_correct": 15
+    },
+    "Interjection": {
+      "items_completed": 11,
+      "items_correct": 10
+    },
+    "WH-Question": {
+      "items_completed": 11,
+      "items_correct": 4,
+      "review_flag": true
+    },
+    "Pronoun": {
+      "items_completed": 17,
+      "items_correct": 3,
+      "review_flag": true
+    },
+    "Adverb": {
+      "items_completed": 8,
+      "items_correct": 7
+    }
+  },
+
+  "skill_level_by_tense": {
+    "present": {
+      "items_completed": 30,
+      "items_correct": 20
+    },
+    "past": {
+      "items_completed": 12,
+      "items_correct": 10
+    }
+  },
+
+  "skill_level_by_person": {
+    "1": {
+      "items_completed": 18,
+      "items_correct": 13
+    },
+    "2": {
+      "items_completed": 35,
+      "items_correct": 32
+    },
+
+  "skill_level_by_number": {
+    "singular": {
+      "items_completed": 19,
+      "items_correct": 14
+    },
+    "plural": {
+      "items_completed": 12,
+      "items_correct": 10
+    }
+  }
+}
+}
+
 },{}]},{},[153])
