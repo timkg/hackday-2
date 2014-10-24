@@ -19703,14 +19703,51 @@ var InfoBoxBody = React.createClass({displayName: 'InfoBoxBody',
 var InfoBox = React.createClass({displayName: 'InfoBox',
   getInitialState: function () {
     return {
-      "display": "are",
-      "root": "be",
-      "POS": "verb",
-      "PennPOS": "?",
-      "verb_class": "copula",
-      "person": 2,
-      "number": "sg",
-      "tense": "present"
+      "sentence": "Good morning.",
+      "speaker": 1,
+      "sentence_related_content": [
+        {
+          "lesson_title": "Greetings and goodbyes",
+          "lesson_id": 102239,
+          "lesson_description": "Greetings and goodbyes - Basic vocabulary"
+        },
+        {
+          "lesson_title": "Salutations",
+          "lesson_id": 102211,
+          "lesson_description": "Salutations - Useful sentences"
+        }
+      ],
+      "sentence_tags": [ "Greeting", "Morning", "Conversation Opener"],
+      "sentence_primary_tag": "Greeting",
+      "words": [
+        {
+          "display": "Good",
+          "root": "good",
+          "POS": "Adjective",
+          "PennPOS": "JJ",
+          "word_related_content": [
+            {
+              "lesson_title": "Small Talk",
+              "lesson_id": 106532,
+              "lesson_description": "Small Talk - Basic vocabulary"
+            }
+          ]
+        },
+        {
+          "display": "morning.",
+          "root": "morning",
+          "POS": "Noun",
+          "PennPOS": "NN",
+          "noun_class": "common",
+          "word_related_content": [
+            {
+              "lesson_title": "Time",
+              "lesson_id": 106748,
+              "lesson_description": "Time - Advanced vocabulary"
+            }
+          ]
+        }
+      ]
     }
   },
   componentDidMount: function () {
@@ -19754,11 +19791,15 @@ module.exports = InfoBox;
 /** @jsx React.DOM */
 var React = require('react');
 var Word = require('./word');
+var Dispatcher = require('../dispatchers/dispatcher');
 
 var Sentence = React.createClass({displayName: 'Sentence',
+  handleClick: function () {
+    Dispatcher.dispatch(this.props.data);
+  },
   render: function () {
     return (
-      React.DOM.p({className: "sentence", 'data-speaker': this.props.data.speaker}, 
+      React.DOM.p({onClick: this.handleClick, className: "sentence", 'data-speaker': this.props.data.speaker}, 
         this.props.data.words.map(function(word) {
           return Word({data: word});
         })
@@ -19769,17 +19810,13 @@ var Sentence = React.createClass({displayName: 'Sentence',
 
 module.exports = Sentence;
 
-},{"./word":151,"react":146}],151:[function(require,module,exports){
+},{"../dispatchers/dispatcher":152,"./word":151,"react":146}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
-var Dispatcher = require('../dispatchers/dispatcher');
 
 var Word = React.createClass({displayName: 'Word',
-  componentWillMount: function () {
-    console.log(this.props)
-  },
   handleClick: function () {
-    Dispatcher.dispatch(this.props.data);
+
   },
   render: function () {
     return (
@@ -19790,7 +19827,7 @@ var Word = React.createClass({displayName: 'Word',
 
 module.exports = Word;
 
-},{"../dispatchers/dispatcher":152,"react":146}],152:[function(require,module,exports){
+},{"react":146}],152:[function(require,module,exports){
 var Promise = require('es6-promise').Promise;
 var merge = require('react/lib/merge');
 

@@ -29,14 +29,51 @@ var InfoBoxBody = React.createClass({
 var InfoBox = React.createClass({
   getInitialState: function () {
     return {
-      "display": "are",
-      "root": "be",
-      "POS": "verb",
-      "PennPOS": "?",
-      "verb_class": "copula",
-      "person": 2,
-      "number": "sg",
-      "tense": "present"
+      "sentence": "Good morning.",
+      "speaker": 1,
+      "sentence_related_content": [
+        {
+          "lesson_title": "Greetings and goodbyes",
+          "lesson_id": 102239,
+          "lesson_description": "Greetings and goodbyes - Basic vocabulary"
+        },
+        {
+          "lesson_title": "Salutations",
+          "lesson_id": 102211,
+          "lesson_description": "Salutations - Useful sentences"
+        }
+      ],
+      "sentence_tags": [ "Greeting", "Morning", "Conversation Opener"],
+      "sentence_primary_tag": "Greeting",
+      "words": [
+        {
+          "display": "Good",
+          "root": "good",
+          "POS": "Adjective",
+          "PennPOS": "JJ",
+          "word_related_content": [
+            {
+              "lesson_title": "Small Talk",
+              "lesson_id": 106532,
+              "lesson_description": "Small Talk - Basic vocabulary"
+            }
+          ]
+        },
+        {
+          "display": "morning.",
+          "root": "morning",
+          "POS": "Noun",
+          "PennPOS": "NN",
+          "noun_class": "common",
+          "word_related_content": [
+            {
+              "lesson_title": "Time",
+              "lesson_id": 106748,
+              "lesson_description": "Time - Advanced vocabulary"
+            }
+          ]
+        }
+      ]
     }
   },
   componentDidMount: function () {
