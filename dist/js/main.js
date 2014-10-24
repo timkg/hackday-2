@@ -18662,13 +18662,14 @@ var InfoBox = React.createClass({displayName: 'InfoBox',
   getInitialState: function () {
     return {
       word: React.DOM.h3(null, "are"),
-      categoryInfo: React.DOM.h4(null, "to be · ", this.state.category),
       category: React.DOM.em(null, "verb"),
+      categoryInfo: React.DOM.h4(null, "to be · ", this.state.category),
       info: React.DOM.table(null, " ", React.DOM.tbody(null, " ", React.DOM.tr(null, " ", React.DOM.td(null, "1st"), " ", React.DOM.td(null, "am"), " "), " ", React.DOM.tr(null, " ", React.DOM.td(null, "2nd"), " ", React.DOM.td(null, "are"), " "), " ", React.DOM.tr(null, " ", React.DOM.td(null, "3rd"), " ", React.DOM.td(null, "is"), " "), " "), " ")
     }
   },
   render: function () {
     return (
+      // these state variables should be nested Components
       React.DOM.div({className: "info"}, 
         this.state.word, 
         this.state.categoryInfo, 
