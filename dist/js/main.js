@@ -19866,210 +19866,145 @@ React.renderComponent(
 );
 
 },{"./components/dialog":147,"./components/infoBox":149,"./lesson1":154,"react":146}],154:[function(require,module,exports){
-module.exports = [
-  {
-    "id": 1442082,
-    "owner_id": null,
-    "l1_text": "Guten Morgen.",
-    "l2_text": "Good morning.",
-    "info_text": "",
-    "item_type": "Phrase",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": 386047,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:31",
 
-    "item": "Good morning.",
-    "sentences": [
-      {
-        "sentence": "Good morning.",
-        "sentence_related_content": [
+  module.exports = [
+    {
+      "id": 1442082,
+      "owner_id": null,
+      "l1_text": "Guten Morgen.",
+      "l2_text": "Good morning.",
+      "info_text": "",
+      "item_type": "Phrase",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": 386047,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:31",
+
+      "item": "Good morning.",
+      "sentences": [
+        {
+          "sentence": "Good morning.",
+          "sentence_related_content": [
+                  {
+                    "lesson_title": "Greetings and goodbyes",
+                    "lesson_id": 102239,
+                    "lesson_description": "Greetings and goodbyes - Basic vocabulary"
+                  },
+                  {
+                    "lesson_title": "Salutations",
+                    "lesson_id": 102211,
+                    "lesson_description": "Salutations - Useful sentences"
+                  }
+                ],
+          "sentence_tags": [ "greeting", "morning"], 
+          "sentence_conversational_context": "usually said before noon",
+          "words": [
+            {
+              "display": "Good",
+              "root": "good",
+              "POS": "adj",
+              "PennPOS": "JJ",
+              "word_related_content": [
+                {
+                  "lesson_title": "Small Talk",
+                  "lesson_id": 106532,
+                  "lesson_description": "Small Talk - Basic vocabulary"      
+                }
+              ]
+            },
+            {
+              "display": "morning.",
+              "root": "morning",
+              "POS": "noun",
+              "PennPOS": "NN",
+              "noun_class": "common",
+              "word_related_content": [
+                {
+                  "lesson_title": "Time",
+                  "lesson_id": 106748,
+                  "lesson_description": "Time - Advanced vocabulary"                  
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1442083,
+      "owner_id": null,
+      "l1_text": "Hallo Cathy, wie geht es Ihnen?",
+      "l2_text": "((Hello)) Cathy, how are you?",
+      "info_text": "",
+      "item_type": "Phrase",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": 369687,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:31",
+      
+      "item": "Hello Cathy, how are you?",
+      "sentences": [
+        {
+          "sentence": "Hello Cathy, how are you?",
+          "sentence_related_content": [
+                  {
+                    "lesson_title": "Small Talk",
+                    "lesson_id": 106532,
+                    "lesson_description": "Small Talk - Basic vocabulary"   
+                  },
+                  {
+                    "lesson_title": " Say it politely! - I",
+                    "lesson_id": 102219,
+                    "lesson_description": "Say it politely! - Useful sentences"
+                  }
+                ],
+          "sentence_tags": [ "greeting", "question"], 
+          "words": [
+            {
+              "display": "Hello",
+              "root": "hello",
+              "POS": "interjection",
+              "PennPOS": "?",
+              "key_vocabulary": true,
+              "word_related_content": [
                 {
                   "lesson_title": "Greetings and goodbyes",
                   "lesson_id": 102239,
-                  "lesson_description": "Greetings and goodbyes - Basic vocabulary"
-                },
-                {
-                  "lesson_title": "Salutations",
-                  "lesson_id": 102211,
-                  "lesson_description": "Salutations - Useful sentences"
+                  "lesson_description": "Greetings and goodbyes - Basic vocabulary"   
                 }
-              ],
-        "words": [
-          {
-            "display": "Good",
-            "root": "good",
-            "POS": "adj",
-            "PennPOS": "JJ",
-            "word_related_content": [
-              {
-                "lesson_title": "Small Talk",
-                "lesson_id": 106532,
-                "lesson_description": "Small Talk - Basic vocabulary"
-              }
-            ]
-          },
-          {
-            "display": "morning.",
-            "root": "morning",
-            "POS": "noun",
-            "PennPOS": "NN",
-            "noun_class": "common",
-            "word_related_content": [
-              {
-                "lesson_title": "Time",
-                "lesson_id": 106748,
-                "lesson_description": "Time - Advanced vocabulary"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 1442083,
-    "owner_id": null,
-    "l1_text": "Hallo Cathy, wie geht es Ihnen?",
-    "l2_text": "((Hello)) Cathy, how are you?",
-    "info_text": "",
-    "item_type": "Phrase",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": 369687,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:31",
-
-    "item": "Hello Cathy, how are you?",
-    "sentences": [
-      {
-        "sentence": "Hello Cathy, how are you?",
-        "words": [
-          {
-            "display": "Hello",
-            "root": "hello",
-            "POS": "interjection",
-            "PennPOS": "?",
-            "key_vocabulary": true
-          },
-          {
-            "display": "Cathy,",
-            "root": "Cathy",
-            "POS": "noun",
-            "PennPOS": "NN",
-            "noun_class": "proper"
-          },
-          {
-            "display": "how",
-            "root": "how",
-            "POS": "wh",
-            "PennPOS": "WH"
-          },
-          {
-            "display": "are",
-            "root": "be",
-            "POS": "verb",
-            "PennPOS": "?",
-            "verb_class": "copula",
-            "person": 2,
-            "number": "sg",
-            "tense": "present"
-          },
-          {
-            "display": "you?",
-            "root": "you",
-            "POS": "pronoun",
-            "PennPOS": "?",
-            "person": 2,
-            "number": "sg"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 1442084,
-    "owner_id": null,
-    "l1_text": "Mir geht es gut, danke. Wie geht es Ihnen?",
-    "l2_text": "I'm fine, thank you. How are you?",
-    "info_text": "",
-    "item_type": "Phrase",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": 371837,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:31",
-
-    "item": "I'm fine, thank you. How are you?",
-    "sentences": [
-        {"sentence": "I'm fine, thank you.",
-          "words": [
-            {
-              "display": "I",
-              "root": "I",
-              "POS": "pronoun",
-              "PennPOS": "?",
-              "person": 1,
-              "number": "sg",
-              "case": "nominative"
+              ]
             },
             {
-              "display": "'m",
-              "root": "be",
-              "POS": "verb",
-              "PennPOS": "?",
-              "verb_class": "copula"
+              "display": "Cathy,",
+              "root": "Cathy",
+              "POS": "noun",
+              "PennPOS": "NN",
+              "noun_class": "proper"
             },
             {
-              "display": "fine,",
-              "root": "fine",
-              "POS": "adj",
-              "PennPOS": "JJ"
-            },
-            {
-              "display": "thank",
-              "root": "thank",
-              "POS": "verb",
-              "PennPOS": "VB",
-              "person": 2,
-              "number": "sg",
-              "tense": "present",
-              "mood": "imperative"
-            },
-            {
-              "display": "you.",
-              "root": "you",
-              "POS": "pronoun",
-              "PennPOS": "?",
-              "person": 2,
-              "number": "sg"
-            }
-          ]
-        },
-        {
-          "sentence": "How are you?",
-          "words": [
-            {
-              "display": "How",
+              "display": "how",
               "root": "how",
               "POS": "wh",
-              "PennPOS": "WH"
+              "PennPOS": "WH",
+              "word_related_content": [
+                {
+                  "lesson_title": "Questions",
+                  "lesson_id": 46533,
+                  "lesson_description": "Where do you live?"   
+                }
+              ]
             },
             {
               "display": "are",
@@ -20079,7 +20014,14 @@ module.exports = [
               "verb_class": "copula",
               "person": 2,
               "number": "sg",
-              "tense": "present"
+              "tense": "present",
+              "word_related_content": [
+                {
+                  "lesson_title": "Irregular verbs in present simple",
+                  "lesson_id": 37135,
+                  "lesson_description": "I am, you are, he/she/it is ..."   
+                }
+              ]
             },
             {
               "display": "you?",
@@ -20087,180 +20029,431 @@ module.exports = [
               "POS": "pronoun",
               "PennPOS": "?",
               "person": 2,
-              "number": "sg"
+              "number": "sg",
+              "word_related_content": [
+                {
+                  "lesson_title": "Personal Pronouns",
+                  "lesson_id": 44055,
+                  "lesson_description": "I, you, he, she, it ..."   
+                }
+              ]
             }
           ]
         }
-    ]
-  },
-  {
-    "id": 1442085,
-    "owner_id": null,
-    "l1_text": "Mir geht es sehr gut, danke.",
-    "l2_text": "I'm very well, ((thank you)).",
-    "info_text": "",
-    "item_type": "Phrase",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": 369689,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:31",
-
-    "item": "I'm very well, thank you.",
-    "sentences": [
-      {"sentence": "I'm very well, thank you.",
-        "words": [
-            {
-              "display": "I",
-              "root": "I",
-              "POS": "pronoun",
-              "PennPOS": "?",
-              "person": 1,
-              "number": "sg",
-              "case": "nominative"
-            },
-            {
-              "display": "'m",
-              "root": "be",
-              "POS": "verb",
-              "PennPOS": "?",
-              "verb_class": "copula"
-            },
-            {
-              "display": "very",
-              "root": "very",
-              "POS": "adv",
-              "PennPOS": "JJ"
-            },,
-            {
-              "display": "well,",
-              "root": "well",
-              "POS": "adj",
-              "PennPOS": "JJ"
-            },
-            {
-              "display": "thank",
-              "root": "thank",
-              "POS": "verb",
-              "PennPOS": "VB",
-              "person": 2,
-              "number": "sg",
-              "tense": "present",
-              "mood": "imperative",
-              "key_vocabulary": true
-            },
-            {
-              "display": "you.",
-              "root": "you",
-              "POS": "pronoun",
-              "PennPOS": "?",
-              "person": 2,
-              "number": "sg",
-              "key_vocabulary": true
-            }
       ]
-      }
-    ]
-  },
-  {
-    "id": 1442086,
-    "owner_id": null,
-    "l1_text": "Cathy hat viel zu tun und verabschiedet sich.",
-    "l2_text": "",
-    "info_text": "",
-    "item_type": "Task",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": null,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:31"
-  },
-  {
-    "id": 1442087,
-    "owner_id": null,
-    "l1_text": "Auf Wiedersehen, John.",
-    "l2_text": "((*Goodbye|*Good bye)) John.",
-    "info_text": "",
-    "item_type": "Phrase",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": 684039,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:31",
-
-
-    "item": "Goodbye, John.",
-    "sentences": [
-      {
-        "sentence": "Goodbye, John.",
-        "words": [
-          {
-            "display": "Goodbye,",
-            "root": "goodbye",
-            "POS": "interjection",
-            "PennPOS": "?",
-            "key_vocabulary": true
+    },
+    {
+      "id": 1442084,
+      "owner_id": null,
+      "l1_text": "Mir geht es gut, danke. Wie geht es Ihnen?",
+      "l2_text": "I'm fine, thank you. How are you?",
+      "info_text": "",
+      "item_type": "Phrase",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": 371837,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:31",
+      
+      "item": "I'm fine, thank you. How are you?",
+      "sentences": [
+          {"sentence": "I'm fine, thank you.",
+            "sentence_related_content": [
+                    {
+                      "lesson_title": "Small Talk",
+                      "lesson_id": 106532,
+                      "lesson_description": "Small Talk - Basic vocabulary"   
+                    },
+                    {
+                      "lesson_title": " Say it politely! - I",
+                      "lesson_id": 102219,
+                      "lesson_description": "Say it politely! - Useful sentences"
+                    }
+                  ],
+          "sentence_tags": [ "greeting", "reply", "polite"], 
+            "words": [
+              {
+                "display": "I",
+                "root": "I",
+                "POS": "pronoun",
+                "PennPOS": "?",
+                "person": 1,
+                "number": "sg",
+                "case": "nominative",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Personal Pronouns",
+                    "lesson_id": 44055,
+                    "lesson_description": "I, you, he, she, it ..."   
+                  }
+                ]
+              },
+              {
+                "display": "'m",
+                "root": "be",
+                "POS": "verb",
+                "PennPOS": "?",
+                "verb_class": "copula",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Irregular verbs in present simple",
+                    "lesson_id": 37135,
+                    "lesson_description": "I am, you are, he/she/it is ..."   
+                  }
+                ]
+              },
+              {
+                "display": "fine,",
+                "root": "fine",
+                "POS": "adj",
+                "PennPOS": "JJ",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Feeling",
+                    "lesson_id": 107231,
+                    "lesson_description": "Feeling - Useful Sentences"   
+                  }
+                ]
+              },
+              {
+                "display": "thank",
+                "root": "thank",
+                "POS": "verb",
+                "PennPOS": "VB",
+                "person": 2,
+                "number": "sg",
+                "tense": "present",
+                "mood": "imperative",
+                "word_related_content": [
+                  {
+                    "lesson_title": " Say it politely! - I",
+                    "lesson_id": 102219,
+                    "lesson_description": "Say it politely! - Useful sentences"  
+                  }
+                ]
+              },
+              {
+                "display": "you.",
+                "root": "you",
+                "POS": "pronoun",
+                "PennPOS": "?",
+                "person": 2,
+                "number": "sg",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Personal Pronouns",
+                    "lesson_id": 44055,
+                    "lesson_description": "I, you, he, she, it ..."   
+                  }
+                ]
+              }
+            ]
           },
           {
-            "display": "John.",
-            "root": "John",
-            "POS": "noun",
-            "PennPOS": "NN",
-            "noun_class": "proper"
+            "sentence": "How are you?",
+            "sentence_related_content": [
+                    {
+                      "lesson_title": "Small Talk",
+                      "lesson_id": 106532,
+                      "lesson_description": "Small Talk - Basic vocabulary"   
+                    },
+                    {
+                      "lesson_title": " Say it politely! - I",
+                      "lesson_id": 102219,
+                      "lesson_description": "Say it politely! - Useful sentences"
+                    }
+                  ],
+          "sentence_tags": [ "greeting", "question"], 
+            "words": [
+              {
+                "display": "How",
+                "root": "how",
+                "POS": "wh",
+                "PennPOS": "WH",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Questions",
+                    "lesson_id": 46533,
+                    "lesson_description": "Where do you live?"   
+                  }
+                ]
+              },
+              {
+                "display": "are",
+                "root": "be",
+                "POS": "verb",
+                "PennPOS": "?",
+                "verb_class": "copula",
+                "person": 2,
+                "number": "sg",
+                "tense": "present",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Irregular verbs in present simple",
+                    "lesson_id": 37135,
+                    "lesson_description": "I am, you are, he/she/it is ..."   
+                  }
+                ]
+              },
+              {
+                "display": "you?",
+                "root": "you",
+                "POS": "pronoun",
+                "PennPOS": "?",
+                "person": 2,
+                "number": "sg",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Personal Pronouns",
+                    "lesson_id": 44055,
+                    "lesson_description": "I, you, he, she, it ..."   
+                  }
+                ]
+              }
+            ]
           }
-        ]
-      }
-    ]
-  },
-  {
-    "id": 1442088,
-    "owner_id": null,
-    "l1_text": "Auf Wiedersehen.",
-    "l2_text": "((*Goodbye|*Good bye)).",
-    "info_text": "",
-    "item_type": "Phrase",
-    "image_id": 0,
-    "speaker_text": "",
-    "meaning_id": null,
-    "refresh_type": "never",
-    "exercise_sound_id": 684040,
-    "reference_language_iso": "DEU",
-    "foreign_language_iso": "ENG",
-    "visible": 1,
-    "created_at": "2013-01-07 13:50:44",
-    "updated_at": "2013-09-01 07:15:32",
+      ]
+    },
+    {
+      "id": 1442085,
+      "owner_id": null,
+      "l1_text": "Mir geht es sehr gut, danke.",
+      "l2_text": "I'm very well, ((thank you)).",
+      "info_text": "",
+      "item_type": "Phrase",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": 369689,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:31",
 
-    "item": "Goodbye.",
-    "sentences": [
-      {
-        "sentence": "Goodbye.",
-        "words": [
-          {
-            "display": "Goodbye.",
-            "root": "goodbye",
-            "POS": "interjection",
-            "PennPOS": "?",
-            "key_vocabulary": true
-          }
+      "item": "I'm very well, thank you.",
+      "sentences": [
+        {"sentence": "I'm very well, thank you.",
+            "sentence_related_content": [
+                    {
+                      "lesson_title": "Small Talk",
+                      "lesson_id": 106532,
+                      "lesson_description": "Small Talk - Basic vocabulary"   
+                    },
+                    {
+                      "lesson_title": " Say it politely! - I",
+                      "lesson_id": 102219,
+                      "lesson_description": "Say it politely! - Useful sentences"
+                    }
+                  ],
+          "sentence_tags": [ "reply", "polite"], 
+          "words": [
+              {
+                "display": "I",
+                "root": "I",
+                "POS": "pronoun",
+                "PennPOS": "?",
+                "person": 1,
+                "number": "sg",
+                "case": "nominative",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Personal Pronouns",
+                    "lesson_id": 44055,
+                    "lesson_description": "I, you, he, she, it ..."   
+                  }
+                ]
+              },
+              {
+                "display": "'m",
+                "root": "be",
+                "POS": "verb",
+                "PennPOS": "?",
+                "verb_class": "copula",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Irregular verbs in present simple",
+                    "lesson_id": 37135,
+                    "lesson_description": "I am, you are, he/she/it is ..."   
+                  }
+                ]
+              },
+              {
+                "display": "very",
+                "root": "very",
+                "POS": "adv",
+                "PennPOS": "JJ",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Adverbs and Adjectives",
+                    "lesson_id": 49973,
+                    "lesson_description": "Adverbs and Adjectives"   
+                  }
+                ]
+              },,
+              {
+                "display": "well,",
+                "root": "well",
+                "POS": "adj",
+                "PennPOS": "JJ",
+                "word_related_content": [
+                  {
+                    "lesson_title": "Irregular verbs in present simple",
+                    "lesson_id": 37135,
+                    "lesson_description": "I am, you are, he/she/it is ..."   
+                  }
+                ]
+              },
+              {
+                "display": "thank",
+                "root": "thank",
+                "POS": "verb",
+                "PennPOS": "VB",
+                "person": 2,
+                "number": "sg",
+                "tense": "present",
+                "mood": "imperative",
+                "key_vocabulary": true
+              },
+              {
+                "display": "you.",
+                "root": "you",
+                "POS": "pronoun",
+                "PennPOS": "?",
+                "person": 2,
+                "number": "sg",
+                "key_vocabulary": true
+              }
         ]
-      }
-    ]
-  }
-];
+        }
+      ]
+    },
+    {
+      "id": 1442086,
+      "owner_id": null,
+      "l1_text": "Cathy hat viel zu tun und verabschiedet sich.",
+      "l2_text": "",
+      "info_text": "",
+      "item_type": "Task",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": null,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:31"
+    },
+    {
+      "id": 1442087,
+      "owner_id": null,
+      "l1_text": "Auf Wiedersehen, John.",
+      "l2_text": "((*Goodbye|*Good bye)) John.",
+      "info_text": "",
+      "item_type": "Phrase",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": 684039,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:31",
+
+
+      "item": "Goodbye, John.",
+      "sentences": [
+        {
+          "sentence": "Goodbye, John.",
+          "sentence_related_content": [
+                  {
+                    "lesson_title": "Greetings and goodbyes",
+                    "lesson_id": 102239,
+                    "lesson_description": "Greetings and goodbyes - Basic vocabulary"
+                  },
+                  {
+                    "lesson_title": "Salutations",
+                    "lesson_id": 102211,
+                    "lesson_description": "Salutations - Useful sentences"
+                  }
+                ],
+          "sentence_tags": [ "greeting"], 
+          "words": [
+            {
+              "display": "Goodbye,",
+              "root": "goodbye",
+              "POS": "interjection",
+              "PennPOS": "?",
+              "key_vocabulary": true
+            },
+            {
+              "display": "John.",
+              "root": "John",
+              "POS": "noun",
+              "PennPOS": "NN",
+              "noun_class": "proper"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1442088,
+      "owner_id": null,
+      "l1_text": "Auf Wiedersehen.",
+      "l2_text": "((*Goodbye|*Good bye)).",
+      "info_text": "",
+      "item_type": "Phrase",
+      "image_id": 0,
+      "speaker_text": "",
+      "meaning_id": null,
+      "refresh_type": "never",
+      "exercise_sound_id": 684040,
+      "reference_language_iso": "DEU",
+      "foreign_language_iso": "ENG",
+      "visible": 1,
+      "created_at": "2013-01-07 13:50:44",
+      "updated_at": "2013-09-01 07:15:32",
+
+      "item": "Goodbye.",
+      "sentences": [
+        {
+          "sentence": "Goodbye.",
+          "sentence_related_content": [
+                  {
+                    "lesson_title": "Greetings and goodbyes",
+                    "lesson_id": 102239,
+                    "lesson_description": "Greetings and goodbyes - Basic vocabulary"
+                  },
+                  {
+                    "lesson_title": "Salutations",
+                    "lesson_id": 102211,
+                    "lesson_description": "Salutations - Useful sentences"
+                  }
+                ],
+          "sentence_tags": [ "greeting"], 
+          "words": [
+            {
+              "display": "Goodbye.",
+              "root": "goodbye",
+              "POS": "interjection",
+              "PennPOS": "?",
+              "key_vocabulary": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
 
 },{}]},{},[153])
