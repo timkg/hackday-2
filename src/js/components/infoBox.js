@@ -1,25 +1,73 @@
 /** @jsx React.DOM */
 var React = require('react');
 
+var InfoBoxHeader = React.createClass({
+  render: function () {
+    return (
+      <h3>{this.props.text}</h3>
+    )
+  }
+});
+
+var InfoBoxSubheader = React.createClass({
+  render: function () {
+    return (
+      <h4>{this.props.text}</h4>
+    )
+  }
+});
+
+var InfoBoxBody = React.createClass({
+  render: function () {
+    return (
+      <div>{this.props.text}</div>
+    )
+  }
+});
+
 var InfoBox = React.createClass({
   getInitialState: function () {
     return {
-      word: <h3>are</h3>,
-      category: <em>verb</em>,
-      categoryInfo: <h4>to be &middot; {this.state.category}</h4>,
-      info: <table> <tbody> <tr> <td>1st</td> <td>am</td> </tr> <tr> <td>2nd</td> <td>are</td> </tr> <tr> <td>3rd</td> <td>is</td> </tr> </tbody> </table>
+      "display": "are",
+      "root": "be",
+      "POS": "verb",
+      "PennPOS": "?",
+      "verb_class": "copula",
+      "person": 2,
+      "number": "sg",
+      "tense": "present"
     }
   },
+  componentWillMount: function () {
+    console.log(this.state)
+  },
+  getHeaderContent: function (state) {
+    return <span>{this.state.display}</span>;
+  },
+  getSubheaderContent: function (state) {
+    switch (this.state.POS) {
+      case "verb":
+        return <span>{this.state.root} &middot; {this.state.POS}</span>;
+        break;
+      default:
+        return <span>{this.state.POS}</span>;
+    }
+  },
+  getBodyContent: function (state) {
+    return <span>This is some fancy content for {this.state.display}</span>;
+  },
   render: function () {
+    var headerContent = this.getHeaderContent();
+    var subheaderContent = this.getSubheaderContent();
+    var bodyContent = this.getBodyContent();
     return (
-      // these state variables should be nested Components
       <div className="info">
-        {this.state.word}
-        {this.state.categoryInfo}
-        {this.state.info}
+        <InfoBoxHeader text={headerContent} />
+        <InfoBoxSubheader text={subheaderContent} />
+        <InfoBoxBody text={bodyContent} />
       </div>
     )
   }
-})
+});
 
-module.exports = InfoBox
+module.exports = InfoBox;

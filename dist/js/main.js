@@ -18658,28 +18658,77 @@ module.exports = require('./lib/React');
 /** @jsx React.DOM */
 var React = require('react');
 
+var InfoBoxHeader = React.createClass({displayName: 'InfoBoxHeader',
+  render: function () {
+    return (
+      React.DOM.h3(null, this.props.text)
+    )
+  }
+});
+
+var InfoBoxSubheader = React.createClass({displayName: 'InfoBoxSubheader',
+  render: function () {
+    return (
+      React.DOM.h4(null, this.props.text)
+    )
+  }
+});
+
+var InfoBoxBody = React.createClass({displayName: 'InfoBoxBody',
+  render: function () {
+    return (
+      React.DOM.div(null, this.props.text)
+    )
+  }
+});
+
 var InfoBox = React.createClass({displayName: 'InfoBox',
   getInitialState: function () {
     return {
-      word: React.DOM.h3(null, "are"),
-      category: React.DOM.em(null, "verb"),
-      categoryInfo: React.DOM.h4(null, "to be · ", this.state.category),
-      info: React.DOM.table(null, " ", React.DOM.tbody(null, " ", React.DOM.tr(null, " ", React.DOM.td(null, "1st"), " ", React.DOM.td(null, "am"), " "), " ", React.DOM.tr(null, " ", React.DOM.td(null, "2nd"), " ", React.DOM.td(null, "are"), " "), " ", React.DOM.tr(null, " ", React.DOM.td(null, "3rd"), " ", React.DOM.td(null, "is"), " "), " "), " ")
+      "display": "are",
+      "root": "be",
+      "POS": "verb",
+      "PennPOS": "?",
+      "verb_class": "copula",
+      "person": 2,
+      "number": "sg",
+      "tense": "present"
     }
   },
+  componentWillMount: function () {
+    console.log(this.state)
+  },
+  getHeaderContent: function (state) {
+    return React.DOM.span(null, this.state.display);
+  },
+  getSubheaderContent: function (state) {
+    switch (this.state.POS) {
+      case "verb":
+        return React.DOM.span(null, this.state.root, " · ", this.state.POS);
+        break;
+      default:
+        return React.DOM.span(null, this.state.POS);
+    }
+  },
+  getBodyContent: function (state) {
+    return React.DOM.span(null, "This is some fancy content for ", this.state.display);
+  },
   render: function () {
+    var headerContent = this.getHeaderContent();
+    var subheaderContent = this.getSubheaderContent();
+    var bodyContent = this.getBodyContent();
     return (
-      // these state variables should be nested Components
       React.DOM.div({className: "info"}, 
-        this.state.word, 
-        this.state.categoryInfo, 
-        this.state.info
+        InfoBoxHeader({text: headerContent}), 
+        InfoBoxSubheader({text: subheaderContent}), 
+        InfoBoxBody({text: bodyContent})
       )
     )
   }
-})
+});
 
-module.exports = InfoBox
+module.exports = InfoBox;
+
 },{"react":145}],147:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
