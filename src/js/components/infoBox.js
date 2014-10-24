@@ -1,5 +1,6 @@
 /** @jsx React.DOM */
 var React = require('react');
+var Dispatcher = require('../dispatchers/dispatcher');
 
 var InfoBoxHeader = React.createClass({
   render: function () {
@@ -38,8 +39,11 @@ var InfoBox = React.createClass({
       "tense": "present"
     }
   },
-  componentWillMount: function () {
-    console.log(this.state)
+  componentDidMount: function () {
+    var self = this;
+    Dispatcher.register(function (payload) {
+      self.setState(payload);
+    })
   },
   getHeaderContent: function (state) {
     return <span>{this.state.display}</span>;
