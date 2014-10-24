@@ -191,6 +191,48 @@
       color: #000;
     }
 
+    .skillOverview {
+      margin-top: 30px;
+      text-align: right;
+    }
+
+    .skillOverview a {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: transparent;
+      shape-rendering: crispEdges;
+    }
+
+    .completed {
+      stroke: none;
+    }
+
+    .correct {
+      stroke: none;
+    }
+
+    .tick text {
+      fill: #4c4c45;
+      font-weight: bold;
+      font-size: 0.8em;
+    }
+
+    .legend text {
+      fill: #8c8c80;
+      font-size: 13px;
+    }
+
+  #chart {
+    display: none;
+  }
+
+
+
   </style>
 </head>
 <body>
@@ -198,6 +240,7 @@
   <div id="container">
 
     <div class="trainer">
+      <div id="chart" style="width: 600px; margin: auto;"></div>
       <h1>Complete the dialogue</h1>
       <div id="dialog"></div>
     </div>
@@ -207,5 +250,122 @@
 
   </div>
   <script src="js/main.js"></script>
+
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script>
+
+    var margin = {top: 50, right: 100, bottom: 20, left: 30},
+      width = 600 - margin.left - margin.right,
+      height = 600 - margin.top - margin.bottom;
+
+    var x = d3.scale.ordinal();
+
+    var y = d3.scale.ordinal();
+
+    var color = d3.scale.ordinal().range(['#727267', '#ff8d15']);
+
+    var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("top");
+
+    var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("right");
+
+    var svg = d3.select("#chart").append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    d3.json("progress.json", function(error, data) {
+      data.forEach(function(d) {
+        d.items_completed = +d.items_completed;
+        d.items_correct = +d.items_correct;
+      });
+
+      x.domain(data.map(function(d) { return d.sentence_type; })).range(d3.range(0, (width-margin.right)+1, (width-margin.right)/2));
+      y.domain(data.map(function(d) { return d.part_of_speech; })).range(d3.range(margin.top, (height-margin.top)+1, (height-margin.top)/7));
+
+      svg.append("g")
+        .attr("class", "x axis")
+        //.attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+      /*   .append("text")
+       .attr("class", "label")
+       .attr("x", width)
+       .attr("y", 6)
+       .style("text-anchor", "end")
+       .text("Sepal Width (cm)");
+       */
+      svg.append("g")
+        .attr("class", "y axis")
+        .attr("transform", "translate(" + width + ",0)")
+        .call(yAxis)
+      /*    .append("text")
+       .attr("class", "label")
+       .attr("transform", "rotate(-90)")
+       .attr("y", -10)
+       .attr("dy", ".71em")
+       .style("text-anchor", "end")
+       .text("Part of Speech")
+       */
+      svg.selectAll(".completed")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "completed")
+        .attr("r", function(d) {return d.items_completed})
+        .attr("cx", function(d) { return x(d.sentence_type); })
+        .attr("cy", function(d) { return y(d.part_of_speech); })
+        .style("fill", function(d) { return color("Completed"); });
+
+      svg.selectAll(".correct")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "correct")
+        .attr("r", function(d) {return d.items_correct})
+        .attr("cx", function(d) { return x(d.sentence_type); })
+        .attr("cy", function(d) { return y(d.part_of_speech); })
+        .style("fill", function(d) { return color("Correct"); });
+
+      var legend = svg.selectAll(".legend")
+        .data(color.domain())
+        .enter().append("g")
+        .attr("class", "legend")
+        .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
+
+      legend.append("rect")
+        .attr("x", width-6)
+        .attr("y", height-26)
+        .attr("width", 18)
+        .attr("height", 18)
+        .style("fill", color);
+
+      legend.append("text")
+        .attr("x", width + 16)
+        .attr("y", height-16)
+        .attr("dy", ".35em")
+        .style("text-anchor", "start")
+        .text(function(d) { return d; });
+
+    });
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

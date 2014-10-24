@@ -19769,12 +19769,20 @@ var SentenceInfoBox = React.createClass({displayName: 'SentenceInfoBox',
     var firstWord = document.querySelector('.info header .word');
     jQuery(firstWord).click();
   },
+  toggleSkillOverview: function () {
+    $('#dialog').toggle();
+    $('h1').toggle();
+    $('#chart').toggle();
+  },
   render: function () {
     return (
       React.DOM.div({className: "info"}, 
         SentenceInfoBoxRelatedContent({sentence_related_content: this.state.sentence_related_content, sentence_primary_tag: this.state.sentence_primary_tag}), 
         SentenceInfoBoxWords({words: this.state.words}), 
-        WordInfo(null)
+        WordInfo(null), 
+        React.DOM.div({className: "skillOverview"}, 
+          React.DOM.a({href: "#", onClick: this.toggleSkillOverview}, "see skill overview")
+        )
       )
     )
   }

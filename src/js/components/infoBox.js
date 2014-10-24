@@ -95,12 +95,20 @@ var SentenceInfoBox = React.createClass({
     var firstWord = document.querySelector('.info header .word');
     jQuery(firstWord).click();
   },
+  toggleSkillOverview: function () {
+    $('#dialog').toggle();
+    $('h1').toggle();
+    $('#chart').toggle();
+  },
   render: function () {
     return (
       <div className="info">
         <SentenceInfoBoxRelatedContent sentence_related_content={this.state.sentence_related_content} sentence_primary_tag={this.state.sentence_primary_tag} />
         <SentenceInfoBoxWords words={this.state.words} />
         <WordInfo />
+        <div className="skillOverview">
+          <a href="#" onClick={this.toggleSkillOverview}>see skill overview</a>
+        </div>
       </div>
     )
   }
