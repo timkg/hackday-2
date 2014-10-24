@@ -19834,6 +19834,7 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
         break;
       case "Pronoun":
         return React.DOM.tbody(null, 
+          React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, SkillBar(null))), 
           React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, SkillBar(null))), 
           React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, SkillBar(null)))
         )

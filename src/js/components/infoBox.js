@@ -160,6 +160,7 @@ var WordInfo = React.createClass({
         break;
       case "Pronoun":
         return <tbody>
+          <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score"><SkillBar /></td></tr>
           <tr><td>person</td><td className="value">{this.state.person}</td><td className="score"><SkillBar /></td></tr>
           <tr><td>number</td><td className="value">{this.state.number}</td><td className="score"><SkillBar /></td></tr>
         </tbody>
