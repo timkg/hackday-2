@@ -1,32 +1,35 @@
 /** @jsx React.DOM */
 var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
+var Word = require('./word');
 
-var InfoBoxHeader = React.createClass({
+var SentenceInfoBoxHeader = React.createClass({
   render: function () {
     return (
-      <h3>{this.props.text}</h3>
+      <header>
+        {this.props.words.map(function(word) {
+          return <Word data={word} />
+        })}
+      </header>
     )
   }
 });
 
-var InfoBoxSubheader = React.createClass({
+var SentenceInfoBoxSubheader = React.createClass({
   render: function () {
+    var relatedLessons = this.props.sentence_related_content.map(function (lesson) {
+      return <li>{lesson.lesson_title}</li>;
+    });
     return (
-      <h4>{this.props.text}</h4>
+      <div>
+        <span>{this.props.sentence_primary_tag}</span>
+        {relatedLessons}
+      </div>
     )
   }
 });
 
-var InfoBoxBody = React.createClass({
-  render: function () {
-    return (
-      <div>{this.props.text}</div>
-    )
-  }
-});
-
-var InfoBox = React.createClass({
+var SentenceInfoBox = React.createClass({
   getInitialState: function () {
     return {
       "sentence": "Good morning.",
@@ -82,10 +85,42 @@ var InfoBox = React.createClass({
       self.setState(payload);
     })
   },
-  getHeaderContent: function (state) {
-    return <span>{this.state.display}</span>;
+  render: function () {
+    return (
+      <div className="info">
+        <SentenceInfoBoxHeader words={this.state.words} />
+        <SentenceInfoBoxSubheader sentence_related_content={this.state.sentence_related_content} sentence_primary_tag={this.state.sentence_primary_tag} />
+        <WordInfo />
+      </div>
+    )
+  }
+});
+
+var WordInfo = React.createClass({
+  componentDidMount: function () {
+    var self = this;
+    Dispatcher.register(function (payload) {
+      if (payload.action === 'WORD_CLICKED') {
+        self.setState(payload);
+      }
+    })
   },
-  getSubheaderContent: function (state) {
+  getInitialState: function () {
+    return {
+      "display": "Good",
+      "root": "good",
+      "POS": "Adjective",
+      "PennPOS": "JJ",
+      "word_related_content": [
+        {
+          "lesson_title": "Small Talk",
+          "lesson_id": 106532,
+          "lesson_description": "Small Talk - Basic vocabulary"
+        }
+      ]
+    }
+  },
+  getPOS: function () {
     switch (this.state.POS) {
       case "verb":
         return <span>{this.state.root} &middot; {this.state.POS}</span>;
@@ -94,21 +129,16 @@ var InfoBox = React.createClass({
         return <span>{this.state.POS}</span>;
     }
   },
-  getBodyContent: function (state) {
-    return <span>This is some fancy content for {this.state.display}</span>;
-  },
   render: function () {
-    var headerContent = this.getHeaderContent();
-    var subheaderContent = this.getSubheaderContent();
-    var bodyContent = this.getBodyContent();
+    var partOfSpeechInfo = this.getPOS();
     return (
-      <div className="info">
-        <InfoBoxHeader text={headerContent} />
-        <InfoBoxSubheader text={subheaderContent} />
-        <InfoBoxBody text={bodyContent} />
+      <div className="wordinfo">
+        <h4>{this.state.display}</h4>
+        {partOfSpeechInfo}
+        <p>This is some fancy content for {this.state.display}</p>
       </div>
     )
   }
 });
 
-module.exports = InfoBox;
+module.exports = SentenceInfoBox;

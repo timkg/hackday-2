@@ -19675,32 +19675,35 @@ module.exports = DialogLine;
 /** @jsx React.DOM */
 var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
+var Word = require('./word');
 
-var InfoBoxHeader = React.createClass({displayName: 'InfoBoxHeader',
+var SentenceInfoBoxHeader = React.createClass({displayName: 'SentenceInfoBoxHeader',
   render: function () {
     return (
-      React.DOM.h3(null, this.props.text)
+      React.DOM.header(null, 
+        this.props.words.map(function(word) {
+          return Word({data: word})
+        })
+      )
     )
   }
 });
 
-var InfoBoxSubheader = React.createClass({displayName: 'InfoBoxSubheader',
+var SentenceInfoBoxSubheader = React.createClass({displayName: 'SentenceInfoBoxSubheader',
   render: function () {
+    var relatedLessons = this.props.sentence_related_content.map(function (lesson) {
+      return React.DOM.li(null, lesson.lesson_title);
+    });
     return (
-      React.DOM.h4(null, this.props.text)
+      React.DOM.div(null, 
+        React.DOM.span(null, this.props.sentence_primary_tag), 
+        relatedLessons
+      )
     )
   }
 });
 
-var InfoBoxBody = React.createClass({displayName: 'InfoBoxBody',
-  render: function () {
-    return (
-      React.DOM.div(null, this.props.text)
-    )
-  }
-});
-
-var InfoBox = React.createClass({displayName: 'InfoBox',
+var SentenceInfoBox = React.createClass({displayName: 'SentenceInfoBox',
   getInitialState: function () {
     return {
       "sentence": "Good morning.",
@@ -19756,10 +19759,42 @@ var InfoBox = React.createClass({displayName: 'InfoBox',
       self.setState(payload);
     })
   },
-  getHeaderContent: function (state) {
-    return React.DOM.span(null, this.state.display);
+  render: function () {
+    return (
+      React.DOM.div({className: "info"}, 
+        SentenceInfoBoxHeader({words: this.state.words}), 
+        SentenceInfoBoxSubheader({sentence_related_content: this.state.sentence_related_content, sentence_primary_tag: this.state.sentence_primary_tag}), 
+        WordInfo(null)
+      )
+    )
+  }
+});
+
+var WordInfo = React.createClass({displayName: 'WordInfo',
+  componentDidMount: function () {
+    var self = this;
+    Dispatcher.register(function (payload) {
+      if (payload.action === 'WORD_CLICKED') {
+        self.setState(payload);
+      }
+    })
   },
-  getSubheaderContent: function (state) {
+  getInitialState: function () {
+    return {
+      "display": "Good",
+      "root": "good",
+      "POS": "Adjective",
+      "PennPOS": "JJ",
+      "word_related_content": [
+        {
+          "lesson_title": "Small Talk",
+          "lesson_id": 106532,
+          "lesson_description": "Small Talk - Basic vocabulary"
+        }
+      ]
+    }
+  },
+  getPOS: function () {
     switch (this.state.POS) {
       case "verb":
         return React.DOM.span(null, this.state.root, " · ", this.state.POS);
@@ -19768,26 +19803,21 @@ var InfoBox = React.createClass({displayName: 'InfoBox',
         return React.DOM.span(null, this.state.POS);
     }
   },
-  getBodyContent: function (state) {
-    return React.DOM.span(null, "This is some fancy content for ", this.state.display);
-  },
   render: function () {
-    var headerContent = this.getHeaderContent();
-    var subheaderContent = this.getSubheaderContent();
-    var bodyContent = this.getBodyContent();
+    var partOfSpeechInfo = this.getPOS();
     return (
-      React.DOM.div({className: "info"}, 
-        InfoBoxHeader({text: headerContent}), 
-        InfoBoxSubheader({text: subheaderContent}), 
-        InfoBoxBody({text: bodyContent})
+      React.DOM.div({className: "wordinfo"}, 
+        React.DOM.h4(null, this.state.display), 
+        partOfSpeechInfo, 
+        React.DOM.p(null, "This is some fancy content for ", this.state.display)
       )
     )
   }
 });
 
-module.exports = InfoBox;
+module.exports = SentenceInfoBox;
 
-},{"../dispatchers/dispatcher":152,"react":146}],150:[function(require,module,exports){
+},{"../dispatchers/dispatcher":152,"./word":151,"react":146}],150:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
 var Word = require('./word');
@@ -19813,10 +19843,12 @@ module.exports = Sentence;
 },{"../dispatchers/dispatcher":152,"./word":151,"react":146}],151:[function(require,module,exports){
 /** @jsx React.DOM */
 var React = require('react');
+var Dispatcher = require('../dispatchers/dispatcher');
+var merge = require('react/lib/merge');
 
 var Word = React.createClass({displayName: 'Word',
   handleClick: function () {
-
+    Dispatcher.dispatch(merge({action: 'WORD_CLICKED'}, this.props.data))
   },
   render: function () {
     return (
@@ -19827,7 +19859,7 @@ var Word = React.createClass({displayName: 'Word',
 
 module.exports = Word;
 
-},{"react":146}],152:[function(require,module,exports){
+},{"../dispatchers/dispatcher":152,"react":146,"react/lib/merge":132}],152:[function(require,module,exports){
 var Promise = require('es6-promise').Promise;
 var merge = require('react/lib/merge');
 
