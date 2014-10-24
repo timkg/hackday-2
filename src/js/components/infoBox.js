@@ -141,32 +141,23 @@ var WordInfo = React.createClass({
     }
   },
   getPOS: function () {
-    var getSkillLevel = function (pos) {
-      var lowValue = Math.round(Math.random() * 10);
-      var highValue = Math.round((Math.random() * 10) + 10);
-      return {
-        low: lowValue,
-        high: highValue
-      };
-    }
-    var skillLevel = getSkillLevel(this.state.POS);
     switch (this.state.POS) {
       case "Verb":
         return <tbody>
-            <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
-            <tr><td>person</td><td className="value">{this.state.person}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
-            <tr><td>number</td><td className="value">{this.state.number}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
-            <tr><td>tense</td><td className="value">{this.state.tense}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+            <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score"><SkillBar /></td></tr>
+            <tr><td>person</td><td className="value">{this.state.person}</td><td className="score"><SkillBar /></td></tr>
+            <tr><td>number</td><td className="value">{this.state.number}</td><td className="score"><SkillBar /></td></tr>
+            <tr><td>tense</td><td className="value">{this.state.tense}</td><td className="score"><SkillBar /></td></tr>
           </tbody>
         break;
       case "Pronoun":
         return <tbody>
-          <tr><td>person</td><td className="value">{this.state.person}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
-          <tr><td>number</td><td className="value">{this.state.number}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+          <tr><td>person</td><td className="value">{this.state.person}</td><td className="score"><SkillBar /></td></tr>
+          <tr><td>number</td><td className="value">{this.state.number}</td><td className="score"><SkillBar /></td></tr>
         </tbody>
         break;
       default:
-        return <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score">{getSkillLevel().low} / {getSkillLevel().high}</td></tr>
+        return <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score"><SkillBar /></td></tr>
         break;
     }
   },
@@ -183,5 +174,34 @@ var WordInfo = React.createClass({
     )
   }
 });
+
+var SkillBar = React.createClass({
+  render: function () {
+    var skillLevel = (function () {
+      var lowValue = Math.round(Math.random() * 10);
+      var highValue = Math.round((Math.random() * 10) + 10);
+      return {
+        low: lowValue,
+        high: highValue
+      };
+    })();
+    var level = Math.round((skillLevel.low / skillLevel.high) * 100);
+    if (!level) {
+      level = 1;
+    }
+    var color = '#2f8fc5';
+    if (level < 30 ) {
+      color = '#e44d25';
+    } else if (level > 70) {
+      color = '#61b746';
+    }
+    var style = {width: level + '%', backgroundColor: color};
+    var reviewText;
+    level < 30 ? reviewText = 'review' : reviewText = '';
+    return (
+      <span><a href="#">{reviewText}</a><span className="barContainer"><span className="bar" style={style}></span></span></span>
+    )
+  }
+})
 
 module.exports = SentenceInfoBox;

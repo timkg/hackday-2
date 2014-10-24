@@ -19815,32 +19815,23 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
     }
   },
   getPOS: function () {
-    var getSkillLevel = function (pos) {
-      var lowValue = Math.round(Math.random() * 10);
-      var highValue = Math.round((Math.random() * 10) + 10);
-      return {
-        low: lowValue,
-        high: highValue
-      };
-    }
-    var skillLevel = getSkillLevel(this.state.POS);
     switch (this.state.POS) {
       case "Verb":
         return React.DOM.tbody(null, 
-            React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
-            React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
-            React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
-            React.DOM.tr(null, React.DOM.td(null, "tense"), React.DOM.td({className: "value"}, this.state.tense), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high))
+            React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, SkillBar(null))), 
+            React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, SkillBar(null))), 
+            React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, SkillBar(null))), 
+            React.DOM.tr(null, React.DOM.td(null, "tense"), React.DOM.td({className: "value"}, this.state.tense), React.DOM.td({className: "score"}, SkillBar(null)))
           )
         break;
       case "Pronoun":
         return React.DOM.tbody(null, 
-          React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high)), 
-          React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high))
+          React.DOM.tr(null, React.DOM.td(null, "person"), React.DOM.td({className: "value"}, this.state.person), React.DOM.td({className: "score"}, SkillBar(null))), 
+          React.DOM.tr(null, React.DOM.td(null, "number"), React.DOM.td({className: "value"}, this.state.number), React.DOM.td({className: "score"}, SkillBar(null)))
         )
         break;
       default:
-        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, getSkillLevel().low, " / ", getSkillLevel().high))
+        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, SkillBar(null)))
         break;
     }
   },
@@ -19857,6 +19848,35 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
     )
   }
 });
+
+var SkillBar = React.createClass({displayName: 'SkillBar',
+  render: function () {
+    var skillLevel = (function () {
+      var lowValue = Math.round(Math.random() * 10);
+      var highValue = Math.round((Math.random() * 10) + 10);
+      return {
+        low: lowValue,
+        high: highValue
+      };
+    })();
+    var level = Math.round((skillLevel.low / skillLevel.high) * 100);
+    if (!level) {
+      level = 1;
+    }
+    var color = '#2f8fc5';
+    if (level < 30 ) {
+      color = '#e44d25';
+    } else if (level > 70) {
+      color = '#61b746';
+    }
+    var style = {width: level + '%', backgroundColor: color};
+    var reviewText;
+    level < 30 ? reviewText = 'review' : reviewText = '';
+    return (
+      React.DOM.span(null, React.DOM.a({href: "#"}, reviewText), React.DOM.span({className: "barContainer"}, React.DOM.span({className: "bar", style: style})))
+    )
+  }
+})
 
 module.exports = SentenceInfoBox;
 
