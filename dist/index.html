@@ -14,29 +14,43 @@
     }
     #container {
       overflow: hidden;
-      padding-top: 60px;
+      padding: 30px;
     }
     .trainer {
-      padding-top: 60px;
       width: 70%;
-    }
-    aside {
-      font-size: 16px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      width: 30%;
-      background-color: #efefef;
+      float: left;
       padding: 20px;
-      border-left: 1px solid #ccc;
+    }
+
+    .sentence {
+      background-color: #efefef;
+      border-left: 5px solid #efefef;
+      border-rigth: 5px solid #efefef;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .sentence[data-speaker="1"] {
+      border-left: 5px solid blue;
+    }
+
+    .sentence[data-speaker="2"] {
+      border-right: 5px solid red;
+    }
+
+    p.dialogLine {
+      text-align: center;
+      padding: 5px;
+    }
+
+    aside {
+      width: 30%;
+      float: left;
+      padding: 20px;
     }
     .info {
-      width: 80%;
-      margin: 0 auto;
-      border: 1px solid #ccc;
       padding: 15px;
-      background-color: #fff;
+      background-color: #efefef;
     }
     .info h3 {
       margin-top: 0;
@@ -69,27 +83,10 @@
 <body>
   <div id="container">
 
-    <div id="dialog"></div>
-
-   <!-- <div class="trainer">
-      <ul>
-        <li>
-          <span class="phrase" data-phrase="greeting">
-            <span class="word" data-pos="adjective">Good</span>
-            <span class="word" data-pos="noun">morning</span>
-            <span class="word" data-pos="noun">John</span>,
-          </span>
-          <span class="phrase" data-phrase="question">
-            <span class="word" data-pos="wh-word">how</span>
-            <span class="word active" data-pos="verb">are</span>
-            <span class="word" data-pos="pronoun">you</span>?
-          </span>
-        </li>
-      </ul>
-    </div>-->
+    <div id="dialog" class="trainer">
+    </div>
 
     <aside>
-
     </aside>
 
   </div>
