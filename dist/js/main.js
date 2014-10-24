@@ -19777,10 +19777,6 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
     var self = this;
     Dispatcher.register(function (payload) {
       if (payload.action === 'WORD_CLICKED') {
-        var words = document.querySelectorAll('.info .word');
-        for ( var i = 0; i < words.length; i++ ) {
-          if (words[i].dataset.active) { words[i].dataset.active = false; }
-        };
         self.setState(payload);
       }
     })
@@ -19855,18 +19851,17 @@ var Dispatcher = require('../dispatchers/dispatcher');
 var merge = require('react/lib/merge');
 
 var Word = React.createClass({displayName: 'Word',
-  getInitialState: function () {
-    return {
-      isActive: false
-    }
-  },
-  handleClick: function () {
-    Dispatcher.dispatch(merge({action: 'WORD_CLICKED'}, this.props.data))
-    this.setState({isActive: true});
+  handleClick: function (event) {
+    var words = document.querySelectorAll('.info .word');
+    for ( var i = 0; i < words.length; i++ ) {
+      if (words[i].dataset.active) { words[i].dataset.active = false; }
+    };
+    Dispatcher.dispatch(merge({action: 'WORD_CLICKED'}, this.props.data));
+    event.target.dataset.active = true;
   },
   render: function () {
     return (
-      React.DOM.span({'data-active': this.state.isActive, onClick: this.handleClick, className: "word", data: this.props.data}, this.props.data.display)
+      React.DOM.span({onClick: this.handleClick, className: "word", data: this.props.data}, this.props.data.display)
     )
   }
 });
