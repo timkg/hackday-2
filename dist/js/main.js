@@ -19677,7 +19677,7 @@ var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
 var Word = require('./word');
 
-var SentenceInfoBoxHeader = React.createClass({displayName: 'SentenceInfoBoxHeader',
+var SentenceInfoBoxWords = React.createClass({displayName: 'SentenceInfoBoxWords',
   render: function () {
     return (
       React.DOM.header(null, 
@@ -19689,15 +19689,17 @@ var SentenceInfoBoxHeader = React.createClass({displayName: 'SentenceInfoBoxHead
   }
 });
 
-var SentenceInfoBoxSubheader = React.createClass({displayName: 'SentenceInfoBoxSubheader',
+var SentenceInfoBoxRelatedContent = React.createClass({displayName: 'SentenceInfoBoxRelatedContent',
   render: function () {
     var relatedLessons = this.props.sentence_related_content.map(function (lesson) {
-      return React.DOM.li(null, lesson.lesson_title);
+      return React.DOM.li(null, "Go to Lesson ", React.DOM.a({href: "#"}, lesson.lesson_title));
     });
     return (
-      React.DOM.div(null, 
+      React.DOM.div({className: "related"}, 
         React.DOM.span(null, this.props.sentence_primary_tag), 
-        relatedLessons
+        React.DOM.ul(null, 
+          relatedLessons
+        )
       )
     )
   }
@@ -19762,8 +19764,8 @@ var SentenceInfoBox = React.createClass({displayName: 'SentenceInfoBox',
   render: function () {
     return (
       React.DOM.div({className: "info"}, 
-        SentenceInfoBoxHeader({words: this.state.words}), 
-        SentenceInfoBoxSubheader({sentence_related_content: this.state.sentence_related_content, sentence_primary_tag: this.state.sentence_primary_tag}), 
+        SentenceInfoBoxRelatedContent({sentence_related_content: this.state.sentence_related_content, sentence_primary_tag: this.state.sentence_primary_tag}), 
+        SentenceInfoBoxWords({words: this.state.words}), 
         WordInfo(null)
       )
     )
@@ -19775,6 +19777,10 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
     var self = this;
     Dispatcher.register(function (payload) {
       if (payload.action === 'WORD_CLICKED') {
+        var words = document.querySelectorAll('.info .word');
+        for ( var i = 0; i < words.length; i++ ) {
+          if (words[i].dataset.active) { words[i].dataset.active = false; }
+        };
         self.setState(payload);
       }
     })
@@ -19797,10 +19803,11 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
   getPOS: function () {
     switch (this.state.POS) {
       case "verb":
-        return React.DOM.span(null, this.state.root, " · ", this.state.POS);
+        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.root, " · ", this.state.POS), React.DOM.td({className: "score"}, "3 out of 5"))
         break;
       default:
-        return React.DOM.span(null, this.state.POS);
+        return React.DOM.tr(null, React.DOM.td(null, "part of speech"), React.DOM.td({className: "value"}, this.state.POS), React.DOM.td({className: "score"}, "3 out of 6"))
+        break;
     }
   },
   render: function () {
@@ -19808,8 +19815,9 @@ var WordInfo = React.createClass({displayName: 'WordInfo',
     return (
       React.DOM.div({className: "wordinfo"}, 
         React.DOM.h4(null, this.state.display), 
-        partOfSpeechInfo, 
-        React.DOM.p(null, "This is some fancy content for ", this.state.display)
+        React.DOM.table(null, 
+          partOfSpeechInfo
+        )
       )
     )
   }
@@ -19847,12 +19855,18 @@ var Dispatcher = require('../dispatchers/dispatcher');
 var merge = require('react/lib/merge');
 
 var Word = React.createClass({displayName: 'Word',
+  getInitialState: function () {
+    return {
+      isActive: false
+    }
+  },
   handleClick: function () {
     Dispatcher.dispatch(merge({action: 'WORD_CLICKED'}, this.props.data))
+    this.setState({isActive: true});
   },
   render: function () {
     return (
-      React.DOM.span({onClick: this.handleClick, className: "word", data: this.props.data}, this.props.data.display)
+      React.DOM.span({'data-active': this.state.isActive, onClick: this.handleClick, className: "word", data: this.props.data}, this.props.data.display)
     )
   }
 });

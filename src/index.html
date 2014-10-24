@@ -10,16 +10,37 @@
     }
     body {
       font-family: Helvetica Neue, Helvetica, Arial;
-      font-size: 20px;
+      padding: 0;
     }
+
+    #topbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
     #container {
+      margin-top: 40px;
       overflow: hidden;
       padding: 30px;
     }
+
+    h1 {
+      font-size: 30px;
+      font-weight: normal;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
     .trainer {
-      width: 60%;
+      width: 70%;
       float: left;
       padding: 20px;
+    }
+
+    #dialog {
+      width: 90%;
+      margin: 0 auto;
     }
 
     .dialogLine {
@@ -28,68 +49,128 @@
     }
 
     .sentence {
+      font-size: 16px;
+      color: #666;
       background-color: #efefef;
-      border-left: 5px solid #efefef;
-      border-rigth: 5px solid #efefef;
-      padding: 10px;
-      margin: 10px;
+      border-left: 3px solid #efefef;
+      border-rigth: 3px solid #efefef;
+      padding: 30px;
+      margin: 20px 10px;
       cursor: pointer;
     }
 
     .sentence[data-speaker="1"] {
-      border-left: 5px solid blue;
+      border-left: 3px solid blue;
     }
 
     .sentence[data-speaker="2"] {
-      border-right: 5px solid red;
-    }
-
-    p.dialogLine {
-      text-align: center;
-      padding: 5px;
+      border-right: 3px solid red;
     }
 
     aside {
-      width: 40%;
-      float: left;
+      width: 30%;
+      float: right;
       padding: 20px;
     }
     .info {
       padding: 15px;
       background-color: #efefef;
     }
+
+    .related {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .related span {
+      font-weight: bold;
+    }
+
+    .related ul {
+      padding-left: 0;
+    }
+
+    .related li span {
+      font-weight: normal;
+      color: #666;
+    }
+
+    .related a {
+      color: #666;
+    }
+
+    .info header {
+      margin: 40px 0;
+    }
+
+    .info header .word {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
     .info h3 {
       margin-top: 0;
     }
-    table {
 
-    }
-
-    td {
-      padding: 2px 0;
-    }
-    td + td {
-      padding-left: 10px;
-    }
-    .phrase {
-
-    }
     .word {
       border-bottom: 1px dashed #eee;
-      padding: 4px;
+      margin: 0 3px;
     }
-    .word.active {
-      box-shadow: 1px 1px 1px 1px #aaa;
+    .word[data-active="true"] {
+      border-bottom: 2px solid #ff8d15;
     }
+
     li {
       list-style: none;
     }
+
+    .wordinfo h4 {
+      color: #ff8d15;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      padding-left: 2px;
+    }
+
+    .wordinfo table {
+      font-size: 12px;
+    }
+
+    .wordinfo table {
+      width: 100%;
+    }
+
+    .wordinfo tr {
+      border-top: 1px solid #aaa;
+      display: block;
+      padding: 3px 0;
+      width: 100%;
+    }
+
+    .wordinfo td {
+      display: inline-block;
+      width: 35%;
+    }
+
+    .wordinfo td.value {
+      font-weight: bold;
+    }
+
+    .wordinfo td.score {
+      text-align: right;
+      width: 30%;
+    }
+
+
   </style>
 </head>
 <body>
+  <img id="topbar" src="topbar.png" />
   <div id="container">
 
-    <div id="dialog" class="trainer">
+    <div class="trainer">
+      <h1>Complete the dialogue</h1>
+      <div id="dialog"></div>
     </div>
 
     <aside>

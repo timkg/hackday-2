@@ -3,7 +3,7 @@ var React = require('react');
 var Dispatcher = require('../dispatchers/dispatcher');
 var Word = require('./word');
 
-var SentenceInfoBoxHeader = React.createClass({
+var SentenceInfoBoxWords = React.createClass({
   render: function () {
     return (
       <header>
@@ -15,15 +15,17 @@ var SentenceInfoBoxHeader = React.createClass({
   }
 });
 
-var SentenceInfoBoxSubheader = React.createClass({
+var SentenceInfoBoxRelatedContent = React.createClass({
   render: function () {
     var relatedLessons = this.props.sentence_related_content.map(function (lesson) {
-      return <li>{lesson.lesson_title}</li>;
+      return <li>Go to Lesson <a href="#">{lesson.lesson_title}</a></li>;
     });
     return (
-      <div>
+      <div className="related">
         <span>{this.props.sentence_primary_tag}</span>
-        {relatedLessons}
+        <ul>
+          {relatedLessons}
+        </ul>
       </div>
     )
   }
@@ -88,8 +90,8 @@ var SentenceInfoBox = React.createClass({
   render: function () {
     return (
       <div className="info">
-        <SentenceInfoBoxHeader words={this.state.words} />
-        <SentenceInfoBoxSubheader sentence_related_content={this.state.sentence_related_content} sentence_primary_tag={this.state.sentence_primary_tag} />
+        <SentenceInfoBoxRelatedContent sentence_related_content={this.state.sentence_related_content} sentence_primary_tag={this.state.sentence_primary_tag} />
+        <SentenceInfoBoxWords words={this.state.words} />
         <WordInfo />
       </div>
     )
@@ -123,10 +125,11 @@ var WordInfo = React.createClass({
   getPOS: function () {
     switch (this.state.POS) {
       case "verb":
-        return <span>{this.state.root} &middot; {this.state.POS}</span>;
+        return <tr><td>part of speech</td><td className="value">{this.state.root} &middot; {this.state.POS}</td><td className="score">3 out of 5</td></tr>
         break;
       default:
-        return <span>{this.state.POS}</span>;
+        return <tr><td>part of speech</td><td className="value">{this.state.POS}</td><td className="score">3 out of 6</td></tr>
+        break;
     }
   },
   render: function () {
@@ -134,8 +137,9 @@ var WordInfo = React.createClass({
     return (
       <div className="wordinfo">
         <h4>{this.state.display}</h4>
-        {partOfSpeechInfo}
-        <p>This is some fancy content for {this.state.display}</p>
+        <table>
+          {partOfSpeechInfo}
+        </table>
       </div>
     )
   }
