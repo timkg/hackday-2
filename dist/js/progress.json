@@ -1,0 +1,128 @@
+[
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "Noun",
+        "items_completed": 1,
+        "items_correct": 0
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "Noun",
+        "items_completed": 18,
+        "items_correct": 10
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "Noun",
+        "items_completed": 23,
+        "items_correct": 9
+    },
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "Verb",
+        "items_completed": 22,
+        "items_correct": 16
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "Verb",
+        "items_completed": 20,
+        "items_correct": 16
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "Verb",
+        "items_completed": 4,
+        "items_correct": 4
+    },
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "Adjective",
+        "items_completed": 21,
+        "items_correct": 2
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "Adjective",
+        "items_completed": 22,
+        "items_correct": 17
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "Adjective",
+        "items_completed": 5,
+        "items_correct": 5
+    },
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "Adverb",
+        "items_completed": 12,
+        "items_correct": 7
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "Adverb",
+        "items_completed": 11,
+        "items_correct": 3
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "Adverb",
+        "items_completed": 9,
+        "items_correct": 1
+    },
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "Pronoun",
+        "items_completed": 7,
+        "items_correct": 0
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "Pronoun",
+        "items_completed": 26,
+        "items_correct": 21
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "Pronoun",
+        "items_completed": 22,
+        "items_correct": 21
+    },
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "WH-Question",
+        "items_completed": 16,
+        "items_correct": 10
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "WH-Question",
+        "items_completed": 20,
+        "items_correct": 11
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "WH-Question",
+        "items_completed": 2,
+        "items_correct": 1
+    },
+    {
+        "sentence_type": "Greeting",
+        "part_of_speech": "Interjection",
+        "items_completed": 14,
+        "items_correct": 11
+    },
+    {
+        "sentence_type": "Small Talk",
+        "part_of_speech": "Interjection",
+        "items_completed": 10,
+        "items_correct": 6
+    },
+    {
+        "sentence_type": "Food and Drink",
+        "part_of_speech": "Interjection",
+        "items_completed": 2,
+        "items_correct": 1
+    }
+]
