@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "name": "howToDoThingsWithWords",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-browserify": "*",
+    "gulp-concat": "*",
+    "react": "*",
+    "reactify": "*",
+    "es6-promise": "*"
+  }
+}
